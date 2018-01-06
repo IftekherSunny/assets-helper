@@ -31,6 +31,30 @@
     // phone rules
     AlertAssets.phone("#alert", "{ background: black; color: white; padding: 20px }");
 
+    // responsive margin rules
+    AlertAssets.margin("#alert", {
+        top: 10, bottom: 20, right: 10, left: 15, // desktop
+        responsive: true, // want responsive
+        tablet: {
+            top: 10, bottom: 20, right: 10, left: 15 // tablet
+        },
+        phone: {
+            top: 10, bottom: 20, right: 10, left: 15 // phone
+        }
+    })
+
+    // responsive padding rules
+    AlertAssets.padding("#alert", {
+        top: 10, bottom: 20, right: 10, left: 15, // desktop
+        responsive: true, // want responsive
+        tablet: {
+            top: 10, bottom: 20, right: 10, left: 15 // tablet
+        },
+        phone: {
+            top: 10, bottom: 20, right: 10, left: 15 // phone
+        }
+    })
+
     // loading alert css assets
     AlertAssets.load();
 
