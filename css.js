@@ -21,7 +21,7 @@
     // instance of assets object
     //
     /////////////////////////////////////////////////////////
-    var Assets = {}
+    var Assets = {};
 
 
 
@@ -34,7 +34,7 @@
         desktop: {},
         tablet: {},
         phone: {}
-    }
+    };
     
 
 
@@ -59,7 +59,7 @@
     //
     /////////////////////////////////////////////////////////
     Assets.desktop = function (selector, rules) {
-        Assets.responsiveCssRules("desktop", selector, rules)
+        Assets.responsiveCssRules("desktop", selector, rules);
     }
 
 
@@ -70,7 +70,7 @@
     //
     /////////////////////////////////////////////////////////
     Assets.tablet = function (selector, rules) {
-        Assets.responsiveCssRules("tablet", selector, rules)
+        Assets.responsiveCssRules("tablet", selector, rules);
     }
 
 
@@ -81,7 +81,81 @@
     //
     /////////////////////////////////////////////////////////
     Assets.phone = function (selector, rules) {
-        Assets.responsiveCssRules("phone", selector, rules)
+        Assets.responsiveCssRules("phone", selector, rules);
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // css rules for margin
+    //
+    /////////////////////////////////////////////////////////
+    Assets.cssRulesForMargin = function (rules) {
+        var margin = '{';
+
+        margin += rules.top ? 'margin-top:' + rules.top + ';' : '';
+        margin += rules.bottom ? 'margin-bottom:' + rules.bottom + ';' : '';
+        margin += rules.right ? 'margin-right:' + rules.right + ';' : '';
+        margin += rules.left ? 'margin-left:' + rules.left + ';' : '';
+        margin += "}";
+
+        return margin;
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // responsive css rules for margin
+    //
+    /////////////////////////////////////////////////////////
+    Assets.margin = function (selector, rules) {
+        var margin = Assets.desktop(selector, Assets.cssRulesForMargin(rules));
+
+        if(rules.responsive) {
+            margin += Assets.tablet(selector, Assets.cssRulesForMargin(rules.tablet));
+            margin += Assets.phone(selector, Assets.cssRulesForMargin(rules.phone));
+        }
+
+        return margin;
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // css rules for padding
+    //
+    /////////////////////////////////////////////////////////
+    Assets.cssRulesForPadding = function (rules) {
+        var padding = '{';
+
+        padding += rules.top ? 'padding-top:' + rules.top + ';' : '';
+        padding += rules.bottom ? 'padding-bottom:' + rules.bottom + ';' : '';
+        padding += rules.right ? 'padding-right:' + rules.right + ';' : '';
+        padding += rules.left ? 'padding-left:' + rules.left + ';' : '';
+        padding += "}";
+
+        return padding;
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // responsive css rules for padding
+    //
+    /////////////////////////////////////////////////////////
+    Assets.padding = function (selector, rules) {
+        var padding = Assets.desktop(selector, Assets.cssRulesForPadding(rules));
+
+        if (rules.responsive) {
+            padding += Assets.tablet(selector, Assets.cssRulesForPadding(rules.tablet));
+            padding += Assets.phone(selector, Assets.cssRulesForPadding(rules.phone));
+        }
+
+        return padding;
     }
 
 
@@ -137,7 +211,7 @@
         phone += "}";
 
         // appending responsive rules ( desktop, tablet, and phone ) to the style tag
-        Assets.appendStyleSheet(desktop + tablet + phone)
+        Assets.appendStyleSheet(desktop + tablet + phone);
     }
 
 
