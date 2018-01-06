@@ -1,6 +1,6 @@
 ## Assets Helper
 
-### Example
+#### HTML Markup
 
 ```html
     <div id="alert">
@@ -9,6 +9,9 @@
         </p>
     </div>
 ```
+
+
+#### Creating CSS Rules
 
 ```js
 
