@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Assets Helper Example</title>
+</head>
+<body>
+
+    <div id="alert">
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro debitis odio nisi. Odit eligendi necessitatibus maxime ab deleniti in voluptatem, obcaecati exercitationem ducimus adipisci soluta hic laboriosam dolorem animi. Facere.
+        </p>
+    </div>
+
+    <script src="css.js"></script>
+    <script>
+        /////////////////////////////////////////////////////////
+        //
+        // Loading Alert element assets
+        //
+        /////////////////////////////////////////////////////////
+        var AlertAssets = Object.assign({}, Assets);
+
+        // desktop rules
+        AlertAssets.desktop("#alert", "{ background: red; color: white; padding: 100px }");
+
+        // tablet rules
+        AlertAssets.tablet("#alert", "{ background: green; color: white; padding: 50px }");
+
+        // phone rules
+        AlertAssets.phone("#alert", "{ background: black; color: white; padding: 20px }");
+
+        // loading alert assets
+        AlertAssets.load();
+    </script>
+</body>
+
+</html>
