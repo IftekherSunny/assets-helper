@@ -189,7 +189,7 @@
     //
     /////////////////////////////////////////////////////////
     Assets.legacyCheck = function (field) {
-        if(!field.responsive) {
+        if(!field.responsive && !field.desktop) {
             updatedField = {}
             updatedField.desktop = field;
             field = updatedField
@@ -293,6 +293,46 @@
 
         if(fontStyle) {
             Assets.desktop(selector, Assets.prop('font-style', 'italic'));
+        }
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // set font size
+    //
+    /////////////////////////////////////////////////////////
+    Assets.fontSize = function (selector, field) {
+        var regx = /px|em|rem/i,
+            css = null;
+        
+        field = Assets.legacyCheck(field);
+
+        if(regx.test(field.desktop)) {
+            css = Assets.prop('font-size', field.desktop);
+        } else {
+            css = Assets.prop('font-size', field.desktop + "px");
+        }
+
+        Assets.desktop(selector, css);
+
+        if(field.responsive) {
+            if (regx.test(field.tablet)) {
+                css = Assets.prop('font-size', field.tablet);
+            } else {
+                css = Assets.prop('font-size', field.tablet + "px");
+            }
+
+            Assets.tablet(selector, css);
+
+            if (regx.test(field.phone)) {
+                css = Assets.prop('font-size', field.phone);
+            } else {
+                css = Assets.prop('font-size', field.phone + "px");
+            }
+
+            Assets.phone(selector, css);
         }
     }
     
