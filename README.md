@@ -17,19 +17,19 @@
 
     /////////////////////////////////////////////////////////
     //
-    // Loading Alert element css rules
+    // Loading Alert element assets
     //
     /////////////////////////////////////////////////////////
     var AlertAssets = Object.assign({}, Assets);
 
     // desktop rules
-    AlertAssets.desktop("#alert", "{ background: red; color: white; padding: 100px }");
+    AlertAssets.desktop("#alert", "background: red; color: white; padding: 100px;");
 
     // tablet rules
-    AlertAssets.tablet("#alert", "{ background: green; color: white; padding: 50px }");
+    AlertAssets.tablet("#alert", "background: green; color: white; padding: 50px;");
 
     // phone rules
-    AlertAssets.phone("#alert", "{ background: black; color: white; padding: 20px }");
+    AlertAssets.phone("#alert", "background: black; color: white; padding: 20px;");
 
     // responsive margin rules
     AlertAssets.margin("#alert", {
@@ -55,7 +55,97 @@
         }
     })
 
-    // loading alert css assets
+    // width prop
+    AlertAssets.width('#alert', {
+        desktop: 20,
+        responsive: true,
+        tablet: 10,
+        phone: 18
+    })
+
+    // height prop
+    AlertAssets.height('#alert', {
+        desktop: 20,
+        responsive: true,
+        tablet: 10,
+        phone: 18
+    })
+
+    // alternative height prop
+    Assets.height("#alert", 20)
+
+    // font weight
+    AlertAssets.fontWeight('#alert', 'regular')
+
+    // font size
+    AlertAssets.fontSize("#alert", {
+        desktop: 20,
+        responsive: true,
+        tablet: 90,
+        phone: 80
+    })
+
+    // line height
+    AlertAssets.lineHeight("#alert", {
+        desktop: 10,
+        responsive: true,
+        tablet: 8,
+        phone: 5
+    })
+
+    // text alignment
+    AlertAssets.alignment("#alert", {
+        desktop: "left",
+        responsive: true,
+        tablet: "right",
+        phone: "center"
+    })
+
+    // setting float value ( with responsive )
+    AlertAssets.float("#alert", {
+        desktop: "left",
+        responsive: true,
+        tablet: "right",
+        phone: "right"
+    })
+
+    // setting float value ( without responsive )
+    AlertAssets.float("#alert", "left")
+
+    // setting hover box shadow
+    AlertAssets.hoverBoxShadow("#alert", {
+        hover_shadow_horizontal: 10,
+        hover_shadow_vertical: 20,
+        hover_shadow_vertical: 30,
+        hover_shadow_blur: 40,
+        hover_shadow_spread: 50,
+        hover_shadow_color: "blue",
+        hover_scale_enabled: true,
+        hover_shadow_scale: "1.5, 1.5"
+    })
+
+    // getting hover box shadow css rules
+    AlertAssets.getHoverBoxShadow({
+        hover_shadow_horizontal: 10,
+        hover_shadow_vertical: 20,
+        hover_shadow_vertical: 30,
+        hover_shadow_blur: 40,
+        hover_shadow_spread: 50,
+        hover_shadow_color: "blue",
+        hover_scale_enabled: true,
+        hover_shadow_scale: "1.5, 1.5"
+    })
+
+    // typography
+    AlertAssets.typography("#alert", {
+        family: "arial", // required
+        size: 20,
+        weight: '100italic',
+        height: 2,
+        case:  'uppercase'
+    })
+
+    // loading alert assets
     AlertAssets.load();
 
 ```
