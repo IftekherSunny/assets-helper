@@ -14,7 +14,7 @@
     </div>
 
     <script src="css.js"></script>
-    <!-- <script>
+    <script>
         /////////////////////////////////////////////////////////
         //
         // Loading Alert element assets
@@ -101,20 +101,18 @@
             phone: "center"
         })
 
-        // loading alert assets
-        AlertAssets.load();
-    </script> -->
-
-    <script>
-        var AlertAssets = Object.assign({}, Assets);
-
-        AlertAssets.alignment("#alert", {
+        // setting float value ( with responsive )
+        AlertAssets.float("#alert", {
             desktop: "left",
             responsive: true,
             tablet: "right",
-            phone: "center"
+            phone: "right"
         })
-        
+
+        // setting float value ( without responsive )
+        AlertAssets.float("#alert", "left")
+
+        // loading alert assets
         AlertAssets.load();
     </script>
 </body>

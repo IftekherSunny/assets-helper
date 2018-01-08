@@ -382,6 +382,31 @@
 
         Assets.setResponsiveCss(selector, field, 'line-height', units)
     }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // set float
+    //
+    /////////////////////////////////////////////////////////
+    Assets.float = function (selector, field) {
+        field = Assets.legacyCheck(field);
+
+        if( (field.desktop == 'left') || (field.desktop == 'right') ) {
+            Assets.desktop(selector, Assets.prop('float', field.desktop))
+        }
+
+        if(field.responsive) {
+            if ((field.tablet == 'left') || (field.tablet == 'right')) {
+                Assets.tablet(selector, Assets.prop('float', field.tablet))
+            }
+
+            if ((field.phone == 'left') || (field.phone == 'right')) {
+                Assets.phone(selector, Assets.prop('float', field.phone))
+            }
+        }
+    }
     
 
 
