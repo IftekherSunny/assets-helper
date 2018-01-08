@@ -166,17 +166,17 @@
         $boolean = $boolean || null;
 
         if( !value || '0px' == value || '0em' == value || '0rem' == value) {
-            return null;
+            return "";
         }
 
         if( _.isBoolean(value) ) {
             if(!$boolean) {
-                return null;
+                return "";
             } 
 
             value = $boolean;
         }
-      
+
         return prop + " : " + value + "; ";
     }
 
@@ -205,8 +205,10 @@
     //
     /////////////////////////////////////////////////////////
     Assets.setResponsiveCss = function (selector, field, prop, units) {
+        var value = "";
+        
         field = Assets.legacyCheck(field);
-        var value = '';
+        units = units || "";
 
         if(field.desktop) {
             value = Assets.desktop(selector, Assets.prop(prop, field.desktop + units));
@@ -361,12 +363,23 @@
 
     /////////////////////////////////////////////////////////
     //
+    // set alignment
+    //
+    /////////////////////////////////////////////////////////
+    Assets.alignment = function (selector, field) {
+        Assets.setResponsiveCss(selector, field, 'text-align')
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
     // set line height
     //
     /////////////////////////////////////////////////////////
     Assets.lineHeight = function (selector, field, units) {
         units = units || '';
-        
+
         Assets.setResponsiveCss(selector, field, 'line-height', units)
     }
     

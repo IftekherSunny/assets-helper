@@ -13,7 +13,6 @@
         </p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="css.js"></script>
     <!-- <script>
         /////////////////////////////////////////////////////////
@@ -86,10 +85,38 @@
             phone: 80
         })
 
+        // line height
+        AlertAssets.lineHeight("#alert", {
+            desktop: 10,
+            responsive: true,
+            tablet: 8,
+            phone: 5
+        })
+
+        // text alignment
+        AlertAssets.alignment("#alert", {
+            desktop: "left",
+            responsive: true,
+            tablet: "right",
+            phone: "center"
+        })
+
         // loading alert assets
         AlertAssets.load();
     </script> -->
 
+    <script>
+        var AlertAssets = Object.assign({}, Assets);
+
+        AlertAssets.alignment("#alert", {
+            desktop: "left",
+            responsive: true,
+            tablet: "right",
+            phone: "center"
+        })
+        
+        AlertAssets.load();
+    </script>
 </body>
 
 </html>
