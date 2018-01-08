@@ -13,6 +13,7 @@
         </p>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="css.js"></script>
     <script>
         /////////////////////////////////////////////////////////
@@ -22,38 +23,57 @@
         /////////////////////////////////////////////////////////
         var AlertAssets = Object.assign({}, Assets);
 
-        // desktop rules
-        AlertAssets.desktop("#alert", "{ background: red; color: white; padding: 100px }");
+        // // desktop rules
+        // AlertAssets.desktop("#alert", "background: red; color: white; padding: 100px");
 
-        // tablet rules
-        AlertAssets.tablet("#alert", "{ background: green; color: white; padding: 50px }");
+        // // tablet rules
+        // AlertAssets.tablet("#alert", "{ background: green; color: white; padding: 50px }");
 
-        // phone rules
-        AlertAssets.phone("#alert", "{ background: black; color: white; padding: 20px }");
+        // // phone rules
+        // AlertAssets.phone("#alert", "background: black; color: white; padding: 20px");
 
-        // responsive margin rules
-        AlertAssets.margin("#alert", {
-            top: 10, bottom: 20, right: 10, left: 15, // desktop
-            responsive: true, // want responsive
-            tablet: {
-                top: 10, bottom: 20, right: 10, left: 15 // tablet
-            },
-            phone: {
-                top: 10, bottom: 20, right: 10, left: 15 // phone
-            }
-        })
+        // // responsive margin rules
+        // AlertAssets.margin("#alert", {
+        //     top: 10, bottom: 20, right: 10, left: 15, // desktop
+        //     responsive: true, // want responsive
+        //     tablet: {
+        //         top: 10, bottom: 20, right: 10, left: 15 // tablet
+        //     },
+        //     phone: {
+        //         top: 10, bottom: 20, right: 10, left: 15 // phone
+        //     }
+        // })
 
-         // responsive padding rules
-        AlertAssets.padding("#alert", {
-            top: 10, bottom: 20, right: 10, left: 15, // desktop
-            responsive: true, // want responsive
-            tablet: {
-                top: 10, bottom: 20, right: 10, left: 15 // tablet
-            },
-            phone: {
-                top: 10, bottom: 20, right: 10, left: 15 // phone
-            }
-        })
+        //  // responsive padding rules
+        // AlertAssets.padding("#alert", {
+        //     top: 10, bottom: 20, right: 10, left: 15, // desktop
+        //     responsive: true, // want responsive
+        //     tablet: {
+        //         top: 10, bottom: 20, right: 10, left: 15 // tablet
+        //     },
+        //     phone: {
+        //         top: 10, bottom: 20, right: 10, left: 15 // phone
+        //     }
+        // })
+
+        // width prop
+        // AlertAssets.width('#alert', {
+        //     desktop: 20,
+        //     responsive: true,
+        //     tablet: 10,
+        //     phone: 18
+        // })
+
+        // height prop
+        // AlertAssets.height('#alert', {
+        //     desktop: 20,
+        //     responsive: true,
+        //     tablet: 10,
+        //     phone: 18
+        // })
+
+        // alternative height prop
+        // Assets.height("#alert", 20)
 
         // loading alert assets
         AlertAssets.load();
