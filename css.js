@@ -5,7 +5,7 @@
 // Copyright (C) Iftekher Sunny < iftekhersunny@hotmail.com >
 // ----------------------------------------------------------------------------
 
-(function () {
+(function (_) {
 
     /////////////////////////////////////////////////////////
     //
@@ -92,13 +92,12 @@
     //
     /////////////////////////////////////////////////////////
     Assets.cssRulesForMargin = function (rules) {
-        var margin = '{';
+        var margin = '';
 
         margin += rules.top ? 'margin-top:' + rules.top + ';' : '';
         margin += rules.bottom ? 'margin-bottom:' + rules.bottom + ';' : '';
         margin += rules.right ? 'margin-right:' + rules.right + ';' : '';
         margin += rules.left ? 'margin-left:' + rules.left + ';' : '';
-        margin += "}";
 
         return margin;
     }
@@ -129,13 +128,12 @@
     //
     /////////////////////////////////////////////////////////
     Assets.cssRulesForPadding = function (rules) {
-        var padding = '{';
+        var padding = '';
 
         padding += rules.top ? 'padding-top:' + rules.top + ';' : '';
         padding += rules.bottom ? 'padding-bottom:' + rules.bottom + ';' : '';
         padding += rules.right ? 'padding-right:' + rules.right + ';' : '';
         padding += rules.left ? 'padding-left:' + rules.left + ';' : '';
-        padding += "}";
 
         return padding;
     }
@@ -158,6 +156,93 @@
         return padding;
     }
 
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // making css prop dynamically
+    //
+    /////////////////////////////////////////////////////////
+    Assets.prop = function (prop, value, $boolean) {
+        $boolean = $boolean || null;
+
+        if( !value || '0px' == value || '0em' == value || '0rem' == value) {
+            return null;
+        }
+
+        if( _.isBoolean(value) ) {
+            if(!$boolean) {
+                return null;
+            } 
+
+            value = $boolean;
+        }
+      
+        return prop + " : " + value + "; ";
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // checking legacy
+    //
+    /////////////////////////////////////////////////////////
+    Assets.legacyCheck = function (field) {
+        if(!field.responsive) {
+            updatedField = {}
+            updatedField.desktop = field;
+            field = updatedField
+        }
+
+        return field;
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // set responsive css rules
+    //
+    /////////////////////////////////////////////////////////
+    Assets.setResponsiveCss = function (selector, field, prop, units) {
+        field = Assets.legacyCheck(field);
+        var value = '';
+
+        if(field.desktop) {
+            value = Assets.desktop(selector, Assets.prop(prop, field.desktop + units));
+        }
+
+        if(field.responsive) {
+            value += Assets.tablet(selector, Assets.prop(prop, field.tablet + units));
+            value += Assets.phone(selector, Assets.prop(prop, field.phone + units))
+        }
+
+        return value;
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // set width prop
+    //
+    /////////////////////////////////////////////////////////
+    Assets.width = function (selector, field) {
+        return Assets.setResponsiveCss(selector, field, 'width', 'px');
+    }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // set height prop
+    //
+    /////////////////////////////////////////////////////////
+    Assets.height = function (selector, field) {
+        return Assets.setResponsiveCss(selector, field, 'height', 'px');
+    }
+    
 
 
     /////////////////////////////////////////////////////////
@@ -188,27 +273,27 @@
     /////////////////////////////////////////////////////////
     Assets.load = function () {
         var desktop = '',
-            tablet = "@media (min-width: 768px) and (max-width: 1024px) {",
-            phone = "@media (max-width: 767px) {";
+            tablet = "@media (min-width: 768px) and (max-width: 1024px) { ",
+            phone = "@media (max-width: 767px) { ";
 
         // appending all desktop rules    
         for (var key in Assets.css.desktop) {
-            desktop += key + Assets.css.desktop[key];
+            desktop += key + " { " + Assets.css.desktop[key] + " } ";
         }
 
         // appending all tablet rules
         for (var key in Assets.css.tablet) {
-            tablet += key + Assets.css.tablet[key];
+            tablet += key + " { " + Assets.css.tablet[key] + " } ";
         }
 
-        tablet += "}";
+        tablet += " } ";
 
         // appending all phone rules
         for (var key in Assets.css.phone) {
-            phone += key + Assets.css.phone[key];
+            phone += key + " { " + Assets.css.phone[key] + " } ";
         }
 
-        phone += "}";
+        phone += " } ";
 
         // appending responsive rules ( desktop, tablet, and phone ) to the style tag
         Assets.appendStyleSheet(desktop + tablet + phone);
@@ -223,4 +308,4 @@
     /////////////////////////////////////////////////////////
     window.Assets = Assets;
 
-}())
+}(_))
