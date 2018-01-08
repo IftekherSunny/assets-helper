@@ -242,6 +242,59 @@
     Assets.height = function (selector, field) {
         return Assets.setResponsiveCss(selector, field, 'height', 'px');
     }
+
+
+
+    /////////////////////////////////////////////////////////
+    //
+    // font weight
+    //
+    /////////////////////////////////////////////////////////
+    Assets.fontWeight = function (selector, field) {
+        var fieldValue = field.value ? field.value : field,
+            fontStyle = false,
+            variant = fieldValue;
+
+        switch (fieldValue) {
+            case 'regular':
+                variant = 400;
+                break;
+            case '100italic':
+                variant = 100;
+                fontStyle = true;
+                break;
+            case '300italic':
+                variant = 300;
+                fontStyle = true;
+                break;
+            case '500italic':
+                variant = 500;
+                fontStyle = true;
+                break;
+            case '600italic':
+                variant = 600;
+                fontStyle = true;
+                break;
+            case '700italic':
+                variant = 700;
+                fontStyle = true;
+                break;
+            case '800italic':
+                variant = 800;
+                fontStyle = true;
+                break;
+            case '900italic':
+                variant = 900;
+                fontStyle = true;
+                break;
+        }
+
+        Assets.desktop(selector, Assets.prop('font-weight', variant));
+
+        if(fontStyle) {
+            Assets.desktop(selector, Assets.prop('font-style', 'italic'));
+        }
+    }
     
 
 
