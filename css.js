@@ -20,7 +20,7 @@
     // instance of assets object
     //
     /////////////////////////////////////////////////////////
-    var Assets = {};
+    var Assets = root.Assets || {};
 
 
 
@@ -544,7 +544,7 @@
     // assigning Assets object to the Global object
     //
     /////////////////////////////////////////////////////////
-    window.Assets = Assets;
+    root.Assets = Assets;
 
 }(
 

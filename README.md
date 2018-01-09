@@ -145,6 +145,9 @@
         case:  'uppercase'
     })
 
+    // getting image url
+    AlertAssets.image("images/info.png")
+
     // loading alert assets
     AlertAssets.load();
 
