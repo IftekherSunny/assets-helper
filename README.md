@@ -160,7 +160,6 @@
     <div id="alert-preview"></div>
 
     <!-- alert template -->
-    <!-- alert template -->
     <QuixTemplate id="alert-template">
         
         <style>
@@ -193,7 +192,7 @@
             // you have access jQuery and lodash :) 
             // $("#alert-1").html("updated element")
         </QuixScript>
-        
+
     </QuixTemplate>
 ```  
 
