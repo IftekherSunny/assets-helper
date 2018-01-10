@@ -153,6 +153,46 @@
 
 ```
 
+#### Template
+
+```html
+    <!-- alert preivew ( showing alert template rendering ) -->
+    <div id="alert-preview"></div>
+
+    <!-- alert template -->
+    <QuixTemplate id="alert-template">
+        
+        <QuixStyle>
+            div#alert-1 {
+                background: red
+            }
+        </QuixStyle>
+
+        <QuixHtml>
+            <div id="alerts">
+                <!-- you can use twig sytax -->
+                {% for alert in alerts %}
+                    <div id="{{ alert }}">
+                        <p>{{ alert }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </QuixHtml>
+
+        <QuixScript>
+            // you have access jQuery and lodash :)
+
+            // $("#alert-1").html("updated element")
+        </QuixScript>
+    </QuixTemplate>
+```  
+
+```js
+    // rendering template
+    AlertAssets.render("#alert-template", {
+        alerts: ["alert-1", "alert-2"]
+    }, "#alert-preview");
+```
 
 ## License
 This library is licensed under the [MIT License](https://github.com/iftekhersunny/assets-helper/blob/master/LICENSE)
