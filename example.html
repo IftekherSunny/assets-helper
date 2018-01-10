@@ -8,11 +8,11 @@
 <body>
 
     <!-- alert element -->
-    <!-- <div id="alert">
+    <div id="alert">
         <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro debitis odio nisi. Odit eligendi necessitatibus maxime ab deleniti in voluptatem, obcaecati exercitationem ducimus adipisci soluta hic laboriosam dolorem animi. Facere.
         </p>
-    </div> -->
+    </div>
 
 
     <!-- alert preivew ( showing alert template rendering ) -->
@@ -22,10 +22,16 @@
     <!-- alert template -->
     <QuixTemplate id="alert-template">
         
-        <QuixStyle>
-            div#alert-1 {
-                background: red
+        <style>
+            body {
+                background: white
             }
+        </style>
+
+        <QuixStyle>
+             // loading css ( JS WAY )
+            var alert = Object.assign({}, Assets); 
+            alert.desktop("#alert-2", "background: {{ color }}");
         </QuixStyle>
 
         <QuixHtml>
@@ -43,7 +49,8 @@
             http://example.com/js/foo.js,
             http://example.com/js/bar.js
         ">
-            // you have access jQuery and lodash :) // $("#alert-1").html("updated element")
+            // you have access jQuery and lodash :) 
+            // $("#alert-1").html("updated element")
         </QuixScript>
     </QuixTemplate>
 
@@ -197,13 +204,14 @@
         // setting style
         AlertAssets.style("#alert-template", { element: "alert " });
 
-        // rendering template
-        AlertAssets.render("#alert-template", {
-            alerts: ["alert-1", "alert-2"]
-        }, "#alert-preview");
-
         // loading alert assets
         AlertAssets.load();
+
+        // rendering template
+        AlertAssets.render("#alert-template", {
+            alerts: ["alert-1", "alert-2"],
+            color: "green"
+        }, "#alert-preview");
     </script>
 </body>
 

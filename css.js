@@ -491,7 +491,7 @@
     // appending stylesheet to the head tag
     //
     /////////////////////////////////////////////////////////
-    Assets._appendStyleSheet = function (css) {
+    Assets._appendStyleSheet = function (css, id) {
         var head = document.head || document.getElementsByTagName('head')[0],
             style = document.createElement('style');
 
@@ -501,7 +501,16 @@
         } else {
             style.appendChild(document.createTextNode(css));
         }
+      
+        // if style already exists
+        // then remove it
+        if(id) {
+            id = id.replace("#", "");
+            style.id = id; 
+            $("style" + id).remove();
+        }
 
+        // append style
         head.appendChild(style);
     }
 
@@ -512,7 +521,7 @@
     // loading css rules
     //
     /////////////////////////////////////////////////////////
-    Assets.load = function () {
+    Assets.load = function (id) {
         var desktop = '',
             tablet = "@media (min-width: 768px) and (max-width: 1024px) { ",
             phone = "@media (max-width: 767px) { ";
@@ -537,7 +546,13 @@
         phone += " } ";
 
         // appending responsive rules ( desktop, tablet, and phone ) to the style tag
-        Assets._appendStyleSheet(desktop + tablet + phone);
+        Assets._appendStyleSheet(desktop + tablet + phone, id);
+
+        Assets.css = {
+            desktop: {},
+            tablet: {},
+            phone: {}
+        };
     }
 
 

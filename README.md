@@ -160,12 +160,19 @@
     <div id="alert-preview"></div>
 
     <!-- alert template -->
+    <!-- alert template -->
     <QuixTemplate id="alert-template">
         
-        <QuixStyle>
-            div#alert-1 {
-                background: red
+        <style>
+            body {
+                background: white
             }
+        </style>
+
+        <QuixStyle>
+             // loading css ( JS WAY )
+            var alert = Object.assign({}, Assets); 
+            alert.desktop("#alert-2", "background: {{ color }}");
         </QuixStyle>
 
         <QuixHtml>
@@ -180,13 +187,13 @@
         </QuixHtml>
 
         <QuixScript dependencies="
-            "http://example.com/js/foo.js",
-            "http://example.com/js/bar.js"
+            http://example.com/js/foo.js,
+            http://example.com/js/bar.js
         ">
-            // you have access jQuery and lodash :)
-
+            // you have access jQuery and lodash :) 
             // $("#alert-1").html("updated element")
         </QuixScript>
+        
     </QuixTemplate>
 ```  
 
