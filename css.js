@@ -20,7 +20,10 @@
     // instance of assets object
     //
     /////////////////////////////////////////////////////////
-    var Assets = root.Assets || {};
+    var Assets = root.Assets || {
+        name: "assets-helper",
+        version: "0.0.0"
+    };
 
 
 
@@ -544,7 +547,7 @@
     // assigning Assets object to the Global object
     //
     /////////////////////////////////////////////////////////
-    root.Assets = Assets;
+    return root.Assets = Assets;
 
 }(
 

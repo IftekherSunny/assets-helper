@@ -7,14 +7,52 @@
 </head>
 <body>
 
-    <div id="alert">
+    <!-- alert element -->
+    <!-- <div id="alert">
         <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro debitis odio nisi. Odit eligendi necessitatibus maxime ab deleniti in voluptatem, obcaecati exercitationem ducimus adipisci soluta hic laboriosam dolorem animi. Facere.
         </p>
-    </div>
+    </div> -->
 
+
+    <!-- alert preivew ( showing alert template rendering ) -->
+    <div id="alert-preview"></div>
+
+
+    <!-- alert template -->
+    <QuixTemplate id="alert-template">
+        
+        <QuixStyle>
+            div#alert-1 {
+                background: red
+            }
+        </QuixStyle>
+
+        <QuixHtml>
+            <div id="alerts">
+                <!-- you can use twig sytax -->
+                {% for alert in alerts %}
+                    <div id="{{ alert }}">
+                        <p>{{ alert }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </QuixHtml>
+
+        <QuixScript>
+            // you have access jQuery and lodash :)
+
+            // $("#alert-1").html("updated element")
+        </QuixScript>
+    </QuixTemplate>
+
+
+    <!-- assets-helper lib -->
     <script src="css.js"></script>
     <script src="image.js"></script>
+    <script src="template.js"></script>
+    
+    <!-- assets-helper API -->
     <script>
         /////////////////////////////////////////////////////////
         //
@@ -148,6 +186,20 @@
 
         // getting image url
         AlertAssets.image("images/info.png")
+
+        // getting html markup by the given template and data
+        AlertAssets.html("#alert-template", { element: "alert "});
+
+        // setting html markup
+        AlertAssets.html("#alert-template", { element: "alert "}, "#alert-preview");
+
+        // setting style
+        AlertAssets.style("#alert-template", { element: "alert " });
+
+        // rendering template
+        AlertAssets.render("#alert-template", {
+            alerts: ["alert-1", "alert-2"]
+        }, "#alert-preview");
 
         // loading alert assets
         AlertAssets.load();
