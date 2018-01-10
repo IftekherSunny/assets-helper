@@ -179,7 +179,10 @@
             </div>
         </QuixHtml>
 
-        <QuixScript>
+        <QuixScript dependencies="
+            "http://example.com/js/foo.js",
+            "http://example.com/js/bar.js"
+        ">
             // you have access jQuery and lodash :)
 
             // $("#alert-1").html("updated element")

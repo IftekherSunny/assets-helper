@@ -89,7 +89,7 @@
         var style = twig({
                 data: $("QuixTemplate" + templateID + " QuixStyle").html()
             })
-            .render(data);
+            .render(Object.assign(data, { Assets: Assets}));
 
         return style;
     }
