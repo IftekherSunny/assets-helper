@@ -1,0 +1,25 @@
+{
+  "name": "assets-helper",
+  "version": "1.0.0",
+  "description": "Assets Helper, a Javascript Assets Helper library",
+  "main": "css.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IftekherSunny/assets-helper.git"
+  },
+  "keywords": [
+    "assets helper",
+    "css",
+    "templating",
+    "image"
+  ],
+  "author": "Iftekher Sunny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IftekherSunny/assets-helper/issues"
+  },
+  "homepage": "https://github.com/IftekherSunny/assets-helper#readme"
+}
