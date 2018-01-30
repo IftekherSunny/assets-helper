@@ -1,6 +1,6 @@
 {
   "name": "@themexpert/assets-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Assets Helper, a Javascript Assets Helper library",
   "main": "css.js",
   "scripts": {
