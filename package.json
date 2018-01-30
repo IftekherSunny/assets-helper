@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IftekherSunny/assets-helper.git"
+    "url": "git+https://github.com/themexpert/assets-helper.git"
   },
   "keywords": [
     "assets helper",
@@ -16,10 +16,14 @@
     "templating",
     "image"
   ],
-  "author": "Iftekher Sunny",
+  "author": {
+    "name": "Iftekher Sunny",
+    "url": "https://github.com/iftekhersunny",
+    "email": "iftekhersunny@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IftekherSunny/assets-helper/issues"
+    "url": "https://github.com/themexpert/assets-helper/issues"
   },
-  "homepage": "https://github.com/IftekherSunny/assets-helper#readme"
+  "homepage": "https://github.com/themexpert/assets-helper#readme"
 }
