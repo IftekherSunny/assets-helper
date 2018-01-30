@@ -1,6 +1,6 @@
 ## Assets Helper
 
-React based file and media manager developed for [Quix Page Builder](https://www.themexpert.com/quix-pagebuilder) and open sourced by [ThemeXpert](https://www.themexpert.com) team.
+JavaScript assets helper library for [Quix Page Builder](https://www.themexpert.com/quix-pagebuilder) and open sourced by [ThemeXpert](https://www.themexpert.com) team.
 
 
 #### HTML Markup
