@@ -204,4 +204,4 @@
 ```
 
 ## License
-This library is licensed under the [MIT License](https://github.com/iftekhersunny/assets-helper/blob/master/LICENSE)
+This library is licensed under the [MIT License](https://github.com/themexpert/assets-helper/blob/master/LICENSE)
