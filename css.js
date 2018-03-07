@@ -96,10 +96,12 @@
     Assets._cssRulesForMargin = function (rules) {
         var margin = '';
 
-        margin += rules.top ? 'margin-top:' + rules.top + ';' : '';
-        margin += rules.bottom ? 'margin-bottom:' + rules.bottom + ';' : '';
-        margin += rules.right ? 'margin-right:' + rules.right + ';' : '';
-        margin += rules.left ? 'margin-left:' + rules.left + ';' : '';
+        if(_.isObject(rules)) {
+            margin += rules.top ? 'margin-top:' + rules.top + 'px;' : '';
+            margin += rules.bottom ? 'margin-bottom:' + rules.bottom + 'px;' : '';
+            margin += rules.right ? 'margin-right:' + rules.right + 'px;' : '';
+            margin += rules.left ? 'margin-left:' + rules.left + 'px;' : '';
+        }
 
         return margin;
     }
@@ -132,10 +134,12 @@
     Assets._cssRulesForPadding = function (rules) {
         var padding = '';
 
-        padding += rules.top ? 'padding-top:' + rules.top + ';' : '';
-        padding += rules.bottom ? 'padding-bottom:' + rules.bottom + ';' : '';
-        padding += rules.right ? 'padding-right:' + rules.right + ';' : '';
-        padding += rules.left ? 'padding-left:' + rules.left + ';' : '';
+        if(_.isObject(rules)) {
+            padding += rules.top ? 'padding-top:' + rules.top + 'px;' : '';
+            padding += rules.bottom ? 'padding-bottom:' + rules.bottom + 'px;' : '';
+            padding += rules.right ? 'padding-right:' + rules.right + 'px;' : '';
+            padding += rules.left ? 'padding-left:' + rules.left + 'px;' : '';
+        }
 
         return padding;
     }
@@ -513,6 +517,8 @@
             style.id = id;
             $("style#" + id).remove();
         }
+
+        console.log(css)
 
         // append style
         head.appendChild(style);

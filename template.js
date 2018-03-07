@@ -98,7 +98,7 @@
         var inlineScript = document.createElement("script");
 
         inlineScript.innerHTML = script;
-console.log(script)
+
         // if script already exists
         // then remove it
         if (mountID) {
@@ -158,7 +158,7 @@ console.log(script)
         var inlineScript = document.createElement("script");
         
         inlineScript.innerHTML = script;
-        console.log(script)
+
         // if script already exists
         // then remove it
         if(mountID) {
