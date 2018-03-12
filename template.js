@@ -144,7 +144,9 @@
         if($.inArray(templateID, Assets.loadedElement) == -1) {
             for (key in filters) {
                 var scriptTag = document.createElement("script");
-
+				var src = "";
+				
+				// if quix loaded
                 if(window.QUIX_URL) {
                     src = window.QUIX_URL + filters[key].replace(/\s/g, '');
                 }
