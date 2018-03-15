@@ -177,7 +177,7 @@
     var normal = state.normal
     
     // Type = Color
-    if( normal.type == "color" && !_.isEmpty(normal.properties.color) ) {
+    if( normal.type == "color" && !_.isUndefined(normal.properties.color) ) {
       Assets.css(selector, "background-color", normal.properties.color)
     }
     // Type = Gradient
@@ -223,7 +223,7 @@
     var hover = state.hover 
     
     // Type = color
-    if( hover.type == "color" && !_.isEmpty(hover.properties.color) ){
+    if( hover.type == "color" && !_.isUndefined(hover.properties.color) ){
       Assets.css(selector + ':hover', "background-color", hover.properties.color)
     }
     // Type = Gradient
