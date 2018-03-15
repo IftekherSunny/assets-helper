@@ -275,12 +275,11 @@
   Assets._cssForDimensions = function (field, type) {
     var css = '';
 
-    if (_.isObject(field)) {
-      css += field.top ? Assets._prop(type + '-top', field.top + 'px') : ''
-      css += field.right ? Assets._prop(type + '-right', field.right + 'px') : ''
-      css += field.bottom ? Assets._prop(type + '-bottom', field.bottom + 'px') : ''
-      css += field.left ? Assets._prop(type + '-left', field.left + 'px') : ''
-    }
+    css += field.top ? Assets._prop(type + '-top', field.top + 'px') : ''
+    css += field.right ? Assets._prop(type + '-right', field.right + 'px') : ''
+    css += field.bottom ? Assets._prop(type + '-bottom', field.bottom + 'px') : ''
+    css += field.left ? Assets._prop(type + '-left', field.left + 'px') : ''
+    
     return css;
   }
 
