@@ -174,10 +174,9 @@
 
     // State : Normal
     // ---------------------------------------
-    var normal = state.normal
-    
+    var normal = state.normal    
     // Type = Color
-    if( normal.type == "color" && !_.isUndefined(normal.properties.color) ) {
+    if( normal.type == "color" && !_.isEmpty(normal.properties.color) ) {
       Assets.css(selector, "background-color", normal.properties.color)
     }
     // Type = Gradient
@@ -215,6 +214,10 @@
         Assets.css(selector, 'background-size', normal.properties.size)
         Assets.css(selector, 'background-position', normal.properties.position)
         Assets.css(selector, 'background-repeat', normal.properties.repeat)
+
+        if( normal.properties.parallax && (normal.properties.parallax_method === 'css') ){
+          Assets.css(selector, 'background-attachment', 'fixed')
+        }
       }
     }  
 
@@ -223,7 +226,7 @@
     var hover = state.hover 
     
     // Type = color
-    if( hover.type == "color" && !_.isUndefined(hover.properties.color) ){
+    if( hover.type == "color" && !_.isEmpty(hover.properties.color)){
       Assets.css(selector + ':hover', "background-color", hover.properties.color)
     }
     // Type = Gradient
@@ -245,23 +248,23 @@
         direction = direction + 'deg'
         css = direction + ', ' + css 
 
-        Assets.css( id + ':hover', 'background', 'linear-gradient('+ css +')' )
+        Assets.css( selector + ':hover', 'background', 'linear-gradient('+ css +')' )
       }
       if( gradient_type == 'radial' ){
         direction = 'at ' + direction
         css = direction + ', ' + css 
 
-        Assets.css( id + ':hover', 'background', 'radial-gradient('+ css +')' )
+        Assets.css( selector + ':hover', 'background', 'radial-gradient('+ css +')' )
       }
 
     }
     // Type : Image
     if( hover.type == 'image' ){
       if( !_.isEmpty(hover.properties.src) ){
-        Assets.css(selector, 'background-image', 'url(' + hover.properties.src + ')')
-        Assets.css(selector, 'background-size', hover.properties.size)
-        Assets.css(selector, 'background-position', hover.properties.position)
-        Assets.css(selector, 'background-repeat', hover.properties.repeat)
+        Assets.css(selector + ':hover', 'background-image', 'url(' + hover.properties.src + ')')
+        Assets.css(selector + ':hover', 'background-size', hover.properties.size)
+        Assets.css(selector + ':hover', 'background-position', hover.properties.position)
+        Assets.css(selector + ':hover', 'background-repeat', hover.properties.repeat)
       }
     }
   }
@@ -387,7 +390,7 @@
       $("style#" + id).remove();
     }
 
-    console.log(css)
+    // console.log(css)
 
     // append style
     head.appendChild(style);
