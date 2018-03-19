@@ -122,11 +122,92 @@
     return Assets._setResponsiveCss(selector, field, 'height', 'px');
   }
 
+  // Typography
+  //=============================================
+  Assets.typography = function( selector, field ){
+    console.log(field)
+    // Family
+    if(! _.isEmpty(field.family) ){
+      Assets.css(selector, 'font-family', field.family)
+      Assets.fontWeight(selector, field.weight)
+    }
+    // Size
+    Assets.fontSize(selector, field.size)
+    // Transform
+    if(! _.isEmpty(field.transform) ){
+      Assets.css(selector, 'text-transform', field.transform)
+    }
+    // Style
+    if(! _.isEmpty(field.style) ){
+      Assets.css(selector, 'font-style', field.style)
+    }
+    // Decoration
+    if(! _.isEmpty(field.decoration) ){
+      Assets.css(selector, 'font-decoration', field.decoration)
+    }
+    // Line Height
+    Assets.lineHeight(selector, field.height, '')
+    // Letter spacing
+    Assets.letterSpacing( selector, field.spacing)
+  }
+
+  // Font-weight
+  //=============================================
+  Assets.fontWeight = function (selector, weight) {
+    var fontStyle = false
+
+    switch (weight) {
+      case 'regular':
+        weight = 400;
+        break;
+      case '100italic':
+        weight = 100;
+        fontStyle = true;
+        break;
+      case '300italic':
+        weight = 300;
+        fontStyle = true;
+        break;
+      case '500italic':
+        weight = 500;
+        fontStyle = true;
+        break;
+      case '600italic':
+        weight = 600;
+        fontStyle = true;
+        break;
+      case '700italic':
+        weight = 700;
+        fontStyle = true;
+        break;
+      case '800italic':
+        weight = 800;
+        fontStyle = true;
+        break;
+      case '900italic':
+        weight = 900;
+        fontStyle = true;
+        break;
+    }
+
+    Assets.css(selector, 'font-weight', weight);
+
+    if (fontStyle) {
+      Assets.css(selector, 'font-style', 'italic');
+    }
+  }
 
   // Font size (responsive)
   //=============================================
   Assets.fontSize = function (selector, field) {
     Assets._setResponsiveCss(selector, field, 'font-size', 'px')
+  }
+
+  // line-height (responsive)
+  //=============================================
+  Assets.lineHeight = function (selector, field, units) {
+    units = units || '';
+    Assets._setResponsiveCss(selector, field, 'line-height', units)
   }
 
   // Letter spacing (responsive)
@@ -140,12 +221,7 @@
     Assets._setResponsiveCss(selector, field, 'text-align')
   }
 
-  // line-height (responsive)
-  //=============================================
-  Assets.lineHeight = function (selector, field, units) {
-    units = units || '';
-    Assets._setResponsiveCss(selector, field, 'line-height', units)
-  }
+  
 
   // float (responsive)
   //=============================================
@@ -312,56 +388,6 @@
       Assets.phone( selector, Assets._prop(prop, field.phone + units) )
     }
   }
-
-  // Font-weight
-  //=============================================
-  Assets.fontWeight = function (selector, field) {
-    var fieldValue = field.value ? field.value : field,
-      fontStyle = false,
-      variant = fieldValue;
-
-    switch (fieldValue) {
-      case 'regular':
-        variant = 400;
-        break;
-      case '100italic':
-        variant = 100;
-        fontStyle = true;
-        break;
-      case '300italic':
-        variant = 300;
-        fontStyle = true;
-        break;
-      case '500italic':
-        variant = 500;
-        fontStyle = true;
-        break;
-      case '600italic':
-        variant = 600;
-        fontStyle = true;
-        break;
-      case '700italic':
-        variant = 700;
-        fontStyle = true;
-        break;
-      case '800italic':
-        variant = 800;
-        fontStyle = true;
-        break;
-      case '900italic':
-        variant = 900;
-        fontStyle = true;
-        break;
-    }
-
-    Assets.desktop(selector, Assets._prop('font-weight', variant));
-
-    if (fontStyle) {
-      Assets.desktop(selector, Assets._prop('font-style', 'italic'));
-    }
-  }
-
-
   
   /////////////////////////////////////////////////////////
   //
